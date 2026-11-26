@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🇸🇳 SEN THIOONO DIEXNA — Assistant Numérique des Démarches Administratives
 
 > **Version 1.0 — Novembre 2026**  
@@ -110,3 +111,7 @@ Au premier démarrage, l'application crée automatiquement la base `sen_thioono_
 ```powershell
 .\mvnw.cmd javafx:run
 ```
+=======
+# SEN_THIONO_DIEXNA
+PLATFORME DE GESTION DE DEMARCHE ADMINISTRATIVE
+>>>>>>> 5faa619c802652fa854b63169d68e9ee8c0f2260
