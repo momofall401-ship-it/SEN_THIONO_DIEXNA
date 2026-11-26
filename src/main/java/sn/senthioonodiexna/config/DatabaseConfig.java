@@ -70,11 +70,6 @@ public class DatabaseConfig {
         ensureTablesAndSeedData();
     }
 
-    private static void ensureDatabaseExists(String host, String port, String user, String password) {
-        // Overload helper
-        ensureDatabaseExists(host, Integer.parseInt(port), user, password);
-    }
-
     private static void ensureDatabaseExists(String host, int port, String user, String password) {
         String serverUrl = String.format("jdbc:mysql://%s:%d/?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC", host, port);
         try (Connection conn = tryConnectServer(serverUrl, user, password);
