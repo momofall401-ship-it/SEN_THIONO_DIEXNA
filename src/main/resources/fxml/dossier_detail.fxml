@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.senthioonodiexna.controller.DossierDetailController"
+            fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;"
+            stylesheets="@../css/style.css">
+
+    <VBox spacing="20.0" style="-fx-padding: 24px;">
+        <!-- Top Back Navigation & Actions -->
+        <HBox alignment="CENTER_LEFT" spacing="12.0">
+            <Button text="← Retour à mes dossiers" onAction="#handleBack" styleClass="btn-secondary"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="submitDraftBtn" text="🚀 Déposer officiellement ce brouillon" onAction="#handleSubmitDraft"
+                    styleClass="btn-primary" visible="false" managed="false"/>
+            <Button text="📄 Récépissé officiel PDF" onAction="#handleDownloadReceiptPdf" styleClass="btn-outline"/>
+        </HBox>
+
+        <!-- Status Overview Card -->
+        <VBox spacing="14.0" styleClass="card">
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="4.0">
+                    <Label fx:id="numeroSuiviLabel" text="DOSSIER N° STD-2026-XXXXX" styleClass="title-large" style="-fx-text-fill: #0f5132;"/>
+                    <Label fx:id="demarcheLabel" text="Démarche : Nom de la démarche" styleClass="title-medium"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="statutBadgeLabel" text="EN_VERIFICATION" styleClass="status-badge" style="-fx-font-size: 13px; -fx-padding: 6px 14px;"/>
+            </HBox>
+
+            <!-- Alert Box for Rejection or Complement -->
+            <VBox fx:id="alertBox" spacing="6.0" style="-fx-padding: 14px; -fx-background-radius: 8px;" visible="false" managed="false">
+                <Label fx:id="alertTitleLabel" text="Information importante" style="-fx-font-weight: bold; -fx-font-size: 13px;"/>
+                <Label fx:id="alertMessageLabel" text="Message explicatif..." wrapText="true"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- General Metadata Grid -->
+            <GridPane hgap="24.0" vgap="12.0">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120" prefWidth="160"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                    <ColumnConstraints minWidth="120" prefWidth="160"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <Label text="Service administratif :" styleClass="text-muted" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="serviceLabel" text="Service" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Date de création :" styleClass="text-muted" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <Label fx:id="dateCreationLabel" text="-" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <Label text="Ministère / Tutelle :" styleClass="text-muted" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="administrationLabel" text="Administration" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Date de dépôt officiel :" styleClass="text-muted" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <Label fx:id="dateDepotLabel" text="-" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                <Label text="Agent instructeur :" styleClass="text-muted" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="agentLabel" text="Non encore assigné" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+        </VBox>
+
+        <!-- Documents & Verification Status -->
+        <VBox spacing="14.0" styleClass="card">
+            <Label text="Pièces du dossier et état de conformité" styleClass="title-medium"/>
+            <TableView fx:id="documentsTable" prefHeight="180.0">
+                <columns>
+                    <TableColumn fx:id="colPieceNom" text="Pièce exigée" prefWidth="250.0"/>
+                    <TableColumn fx:id="colPieceObligatoire" text="Exigence" prefWidth="110.0"/>
+                    <TableColumn fx:id="colPieceStatut" text="Conformité" prefWidth="140.0"/>
+                    <TableColumn fx:id="colPieceRemarque" text="Observations de l'agent" prefWidth="280.0"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+                <placeholder>
+                    <Label text="Aucun document associé." styleClass="text-muted"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+
+        <!-- Chronological Timeline History (RG07) -->
+        <VBox spacing="14.0" styleClass="card">
+            <Label text="Historique des actions et décisions" styleClass="title-medium"/>
+            <VBox fx:id="historyContainer" spacing="12.0">
+                <!-- Timeline items dynamically generated -->
+            </VBox>
+        </VBox>
+    </VBox>
+</ScrollPane>

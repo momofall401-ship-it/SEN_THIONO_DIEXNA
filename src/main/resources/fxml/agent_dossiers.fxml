@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sn.senthioonodiexna.controller.AgentDossiersController"
+      spacing="20.0" style="-fx-padding: 24px;"
+      stylesheets="@../css/style.css">
+
+    <!-- Header & Service Info -->
+    <HBox alignment="CENTER_LEFT" spacing="16.0">
+        <VBox spacing="4.0">
+            <Label fx:id="serviceTitleLabel" text="Espace Agent — Instruction des dossiers" styleClass="title-large"/>
+            <Label fx:id="serviceSubtitleLabel" text="Dossiers rattachés à votre service administratif (RG04)" styleClass="text-muted"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="📥 Enregistrer un dépôt physique" onAction="#handleRegisterPhysicalDeposit" styleClass="btn-primary"/>
+    </HBox>
+
+    <!-- Filters Bar -->
+    <HBox spacing="12.0" alignment="CENTER_LEFT" styleClass="card" style="-fx-padding: 12px 18px;">
+        <TextField fx:id="searchField" promptText="Recherche par numéro de suivi, nom d'usager ou démarche..."
+                   HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="statutFilterCombo" promptText="Tous les statuts" prefWidth="200.0"/>
+        <Button text="Filtrer" onAction="#handleFilter" styleClass="btn-secondary"/>
+        <Button text="Réinitialiser" onAction="#handleReset" styleClass="btn-secondary"/>
+    </HBox>
+
+    <!-- Table of Dossiers -->
+    <TableView fx:id="dossiersTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNumeroSuivi" text="N° Suivi" prefWidth="140.0"/>
+            <TableColumn fx:id="colCitoyen" text="Usager / Demandeur" prefWidth="200.0"/>
+            <TableColumn fx:id="colDemarche" text="Démarche" prefWidth="240.0"/>
+            <TableColumn fx:id="colDateDepot" text="Date Dépôt" prefWidth="130.0"/>
+            <TableColumn fx:id="colStatut" text="Statut actuel" prefWidth="180.0"/>
+            <TableColumn fx:id="colAction" text="Actions" prefWidth="130.0"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+        <placeholder>
+            <Label text="Aucun dossier trouvé pour votre service." styleClass="text-muted"/>
+        </placeholder>
+    </TableView>
+</VBox>

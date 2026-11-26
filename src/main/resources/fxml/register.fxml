@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.senthioonodiexna.controller.RegisterController"
+            prefHeight="700.0" prefWidth="900.0"
+            stylesheets="@../css/style.css">
+
+    <!-- Left Brand Panel -->
+    <left>
+        <VBox alignment="CENTER" prefWidth="380.0" spacing="20.0"
+              style="-fx-background-color: #0f172a; -fx-padding: 40px;">
+            <VBox spacing="12.0" alignment="CENTER">
+                <ImageView fitHeight="80.0" fitWidth="80.0" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo.png"/>
+                    </image>
+                </ImageView>
+                <Label text="SEN THIOONO DIEXNA" textAlignment="CENTER"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #ffffff;"/>
+                <Label text="Rejoignez la plateforme des démarches citoyennes"
+                       textAlignment="CENTER" wrapText="true"
+                       style="-fx-font-size: 13px; -fx-text-fill: #d4af37; -fx-font-weight: 600;"/>
+            </VBox>
+
+            <Separator style="-fx-opacity: 0.2;"/>
+
+            <VBox spacing="12.0">
+                <Label text="Pourquoi s'inscrire ?" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14px;"/>
+                <Label text="• Enregistrez vos dossiers administratifs" style="-fx-text-fill: #94a3b8;"/>
+                <Label text="• Suivez en direct les étapes et vérifications" style="-fx-text-fill: #94a3b8;"/>
+                <Label text="• Recevez des notifications immédiates en cas de complément" style="-fx-text-fill: #94a3b8;"/>
+                <Label text="• Téléchargez des fiches récapitulatives prêtes pour les guichets" style="-fx-text-fill: #94a3b8;"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="← Retour à la connexion" onAction="#handleGoToLogin"
+                    styleClass="btn-outline" style="-fx-text-fill: #d4af37; -fx-border-color: #d4af37;"/>
+        </VBox>
+    </left>
+
+    <!-- Right Registration Form -->
+    <center>
+        <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #f8fafc; -fx-padding: 40px;">
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+                <VBox alignment="CENTER">
+                    <VBox maxWidth="420.0" spacing="18.0" styleClass="card">
+                        <VBox spacing="4.0">
+                            <Label text="Inscription Citoyen" styleClass="title-large"/>
+                            <Label text="Remplissez vos informations pour créer votre compte usager" styleClass="text-muted"/>
+                        </VBox>
+
+                        <VBox spacing="12.0">
+                            <HBox spacing="12.0">
+                                <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                                    <Label text="Prénom *" styleClass="text-bold"/>
+                                    <TextField fx:id="prenomField" promptText="Ex: Moussa"/>
+                                </VBox>
+                                <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                                    <Label text="Nom *" styleClass="text-bold"/>
+                                    <TextField fx:id="nomField" promptText="Ex: Diop"/>
+                                </VBox>
+                            </HBox>
+
+                            <VBox spacing="6.0">
+                                <Label text="Adresse E-mail *" styleClass="text-bold"/>
+                                <TextField fx:id="emailField" promptText="moussa.diop@exemple.sn"/>
+                            </VBox>
+
+                            <VBox spacing="6.0">
+                                <Label text="Téléphone (Sénégal)" styleClass="text-bold"/>
+                                <TextField fx:id="telephoneField" promptText="+221 77 123 45 67"/>
+                            </VBox>
+
+                            <VBox spacing="6.0">
+                                <Label text="Mot de passe * (min 6 caractères)" styleClass="text-bold"/>
+                                <PasswordField fx:id="passwordField" promptText="••••••••"/>
+                            </VBox>
+
+                            <VBox spacing="6.0">
+                                <Label text="Confirmer le mot de passe *" styleClass="text-bold"/>
+                                <PasswordField fx:id="confirmPasswordField" promptText="••••••••"/>
+                            </VBox>
+
+                            <Label fx:id="errorLabel" wrapText="true" visible="false" managed="false"
+                                   style="-fx-text-fill: #dc3545; -fx-font-size: 12px;"/>
+
+                            <Button fx:id="registerButton" text="Créer mon compte citoyen" onAction="#handleRegister"
+                                    maxWidth="Infinity" styleClass="btn-primary" defaultButton="true"/>
+                        </VBox>
+
+                        <Separator/>
+
+                        <HBox alignment="CENTER" spacing="6.0">
+                            <Label text="Vous possédez déjà un compte ?" styleClass="text-muted"/>
+                            <Hyperlink text="Se connecter" onAction="#handleGoToLogin"
+                                       style="-fx-text-fill: #0f5132; -fx-font-weight: bold;"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

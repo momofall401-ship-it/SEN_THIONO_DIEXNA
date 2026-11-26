@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sn.senthioonodiexna.controller.AdminServicesController"
+      spacing="20.0" style="-fx-padding: 24px;"
+      stylesheets="@../css/style.css">
+
+    <!-- Header & Action Buttons -->
+    <HBox alignment="CENTER_LEFT" spacing="16.0">
+        <VBox spacing="4.0">
+            <Label text="Gestion des Administrations &amp; Services" styleClass="title-large"/>
+            <Label text="Répertoire officiel des ministères, mairies et divisions administratives" styleClass="text-muted"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="+ Nouvelle Administration" onAction="#handleNewAdministration" styleClass="btn-secondary"/>
+        <Button text="+ Nouveau Service" onAction="#handleNewService" styleClass="btn-primary"/>
+    </HBox>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <!-- Services Tab -->
+        <Tab text="Services Administratifs">
+            <VBox spacing="14.0" style="-fx-padding: 14px 0 0 0;">
+                <TableView fx:id="servicesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colServiceId" text="ID" prefWidth="50.0"/>
+                        <TableColumn fx:id="colServiceNom" text="Nom du service" prefWidth="250.0"/>
+                        <TableColumn fx:id="colServiceAdmin" text="Administration de rattachement" prefWidth="230.0"/>
+                        <TableColumn fx:id="colServiceTel" text="Téléphone" prefWidth="130.0"/>
+                        <TableColumn fx:id="colServiceEmail" text="E-mail" prefWidth="180.0"/>
+                        <TableColumn fx:id="colServiceAction" text="Actions" prefWidth="140.0"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <!-- Administrations Tab -->
+        <Tab text="Administrations &amp; Ministères">
+            <VBox spacing="14.0" style="-fx-padding: 14px 0 0 0;">
+                <TableView fx:id="administrationsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colAdminId" text="ID" prefWidth="50.0"/>
+                        <TableColumn fx:id="colAdminNom" text="Nom de l'administration" prefWidth="240.0"/>
+                        <TableColumn fx:id="colAdminAdresse" text="Adresse officielle" prefWidth="220.0"/>
+                        <TableColumn fx:id="colAdminTel" text="Téléphone" prefWidth="130.0"/>
+                        <TableColumn fx:id="colAdminEmail" text="E-mail" prefWidth="180.0"/>
+                        <TableColumn fx:id="colAdminAction" text="Actions" prefWidth="140.0"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

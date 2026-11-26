@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.senthioonodiexna.controller.CatalogueController"
+            fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;"
+            stylesheets="@../css/style.css">
+
+    <VBox spacing="20.0" style="-fx-padding: 24px;">
+        <!-- Header & Search Controls -->
+        <VBox spacing="14.0" styleClass="card">
+            <Label text="Catalogue des démarches administratives" styleClass="title-large"/>
+            <Label text="Recherchez les démarches officielles, consultez les pièces nécessaires et préparez vos dossiers." styleClass="text-muted"/>
+
+            <HBox spacing="12.0" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Recherche par mot-clé (titre, mot-clé, ministère...)"
+                           HBox.hgrow="ALWAYS" style="-fx-padding: 9px 12px;"/>
+                <ComboBox fx:id="serviceFilterCombo" promptText="Tous les services" prefWidth="250.0"/>
+                <Button text="Rechercher" onAction="#handleSearch" styleClass="btn-primary"/>
+                <Button text="Réinitialiser" onAction="#handleReset" styleClass="btn-secondary"/>
+            </HBox>
+
+            <Label fx:id="resultCountLabel" text="Chargement..." style="-fx-font-weight: bold; -fx-text-fill: #0f5132;"/>
+        </VBox>
+
+        <!-- Démarches Cards Container -->
+        <FlowPane fx:id="demarchesContainer" hgap="18.0" vgap="18.0"/>
+    </VBox>
+</ScrollPane>

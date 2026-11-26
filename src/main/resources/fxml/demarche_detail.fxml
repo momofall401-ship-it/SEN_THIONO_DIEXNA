@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.senthioonodiexna.controller.DemarcheDetailController"
+            fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;"
+            stylesheets="@../css/style.css">
+
+    <VBox spacing="20.0" style="-fx-padding: 24px;">
+        <!-- Top Back Navigation -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Button text="← Retour au catalogue" onAction="#handleBack" styleClass="btn-secondary"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="📄 Télécharger le récapitulatif PDF" onAction="#handleDownloadPdf" styleClass="btn-outline"/>
+        </HBox>
+
+        <!-- Main Information Card -->
+        <VBox spacing="14.0" styleClass="card">
+            <VBox spacing="4.0">
+                <Label fx:id="titreLabel" text="Titre de la démarche" styleClass="title-large" wrapText="true"/>
+                <Label fx:id="serviceLabel" text="Service compétent" styleClass="text-muted"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Metadata Pills -->
+            <HBox spacing="20.0" alignment="CENTER_LEFT" style="-fx-background-color: #f8fafc; -fx-padding: 12px; -fx-background-radius: 8px;">
+                <VBox spacing="2.0">
+                    <Label text="Frais indicatifs" styleClass="text-muted"/>
+                    <Label fx:id="fraisLabel" text="500 FCFA" style="-fx-font-weight: bold; -fx-text-fill: #0f5132;"/>
+                </VBox>
+                <Separator orientation="VERTICAL"/>
+                <VBox spacing="2.0">
+                    <Label text="Délai estimé" styleClass="text-muted"/>
+                    <Label fx:id="delaiLabel" text="24 à 48 heures" style="-fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+                </VBox>
+                <Separator orientation="VERTICAL"/>
+                <VBox spacing="2.0">
+                    <Label text="Coordonnées du service" styleClass="text-muted"/>
+                    <Label fx:id="contactLabel" text="+221 33 821 12 45" style="-fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Description & Conditions -->
+            <VBox spacing="8.0">
+                <Label text="Description de la procédure" styleClass="title-medium"/>
+                <Label fx:id="descriptionLabel" text="Description complète..." wrapText="true" style="-fx-line-spacing: 4px;"/>
+            </VBox>
+
+            <VBox spacing="8.0">
+                <Label text="Conditions d'éligibilité et prérequis" styleClass="title-medium"/>
+                <Label fx:id="conditionsLabel" text="Conditions..." wrapText="true" style="-fx-line-spacing: 4px;"/>
+            </VBox>
+        </VBox>
+
+        <!-- Checklist Interactive Assistant (Section 6.3) -->
+        <VBox spacing="16.0" styleClass="card">
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="2.0">
+                    <Label text="Assistant de parcours : Checklist des pièces à fournir" styleClass="title-medium"/>
+                    <Label text="Cochez les pièces que vous avez déjà réunies pour vérifier si votre dossier est prêt." styleClass="text-muted"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <VBox alignment="CENTER_RIGHT" spacing="2.0">
+                    <Label fx:id="checklistProgressLabel" text="0 / 0 pièce prête (0%)" style="-fx-font-weight: bold; -fx-text-fill: #0f5132;"/>
+                    <ProgressBar fx:id="checklistProgressBar" prefWidth="200.0" progress="0.0"/>
+                </VBox>
+            </HBox>
+
+            <VBox fx:id="checklistItemsContainer" spacing="10.0">
+                <!-- Dynamically generated checkbox items -->
+            </VBox>
+
+            <Label fx:id="checklistMessageLabel" text="Veuillez cocher les pièces déjà prêtes."
+                   style="-fx-font-weight: bold; -fx-text-fill: #0284c7; -fx-padding: 6px 0;"/>
+        </VBox>
+
+        <!-- Chronological Steps (Section 6.2) -->
+        <VBox spacing="14.0" styleClass="card">
+            <Label text="Étapes à suivre pour cette démarche" styleClass="title-medium"/>
+            <VBox fx:id="etapesContainer" spacing="12.0">
+                <!-- Dynamically populated steps -->
+            </VBox>
+        </VBox>
+
+        <!-- Actions / Dépôt du dossier -->
+        <VBox spacing="12.0" styleClass="card" style="-fx-border-color: #0f5132; -fx-border-width: 1.5px;">
+            <Label text="Enregistrer et déposer votre dossier" styleClass="title-medium"/>
+            <Label text="Enregistrez ce dossier dans votre espace pour générer votre numéro de suivi officiel et suivre son instruction." styleClass="text-muted"/>
+
+            <HBox spacing="14.0" style="-fx-padding: 8px 0 0 0;">
+                <Button text="💾 Enregistrer en brouillon" onAction="#handleSaveDraft" styleClass="btn-secondary"/>
+                <Button text="🚀 Déposer officiellement mon dossier" onAction="#handleSubmitDossier" styleClass="btn-primary"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.senthioonodiexna.controller.CitizenHomeController"
+            fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;"
+            stylesheets="@../css/style.css">
+
+    <VBox spacing="24.0" style="-fx-padding: 24px;">
+        <!-- Hero Banner -->
+        <VBox spacing="14.0" style="-fx-background-color: linear-gradient(to right, #0f5132, #146c43); -fx-background-radius: 12px; -fx-padding: 30px;">
+            <Label text="Bienvenue sur Sen Thioono Diexna" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Préparez vos démarches administratives, complétez votre checklist et suivez vos dossiers en temps réel."
+                   style="-fx-font-size: 13px; -fx-text-fill: #d1e7dd;"/>
+
+            <!-- Quick Search Bar -->
+            <HBox spacing="10.0" alignment="CENTER_LEFT" maxWidth="600.0" style="-fx-padding: 6px 0 0 0;">
+                <TextField fx:id="quickSearchField" promptText="Rechercher une démarche (ex: Passeport, Casier, CNI, Permis...)"
+                           HBox.hgrow="ALWAYS" style="-fx-padding: 10px 14px; -fx-font-size: 13px;"/>
+                <Button text="Rechercher" onAction="#handleQuickSearch" styleClass="btn-accent" style="-fx-padding: 10px 18px;"/>
+            </HBox>
+        </VBox>
+
+        <!-- Citizen Quick Status Metrics -->
+        <HBox spacing="16.0">
+            <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card-stat">
+                <Label text="Dossiers en cours" styleClass="text-muted"/>
+                <Label fx:id="dossiersEnCoursLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #0284c7;"/>
+                <Label text="Déposés ou en instruction" style="-fx-font-size: 11px; -fx-text-fill: #64748b;"/>
+            </VBox>
+
+            <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card-stat">
+                <Label text="Compléments attendus" styleClass="text-muted"/>
+                <Label fx:id="complementsLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #d97706;"/>
+                <Label text="Pièces à rectifier d'urgence" style="-fx-font-size: 11px; -fx-text-fill: #64748b;"/>
+            </VBox>
+
+            <VBox spacing="6.0" HBox.hgrow="ALWAYS" styleClass="card-stat">
+                <Label text="Dossiers acceptés" styleClass="text-muted"/>
+                <Label fx:id="dossiersAcceptesLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #059669;"/>
+                <Label text="Prêts pour retrait" style="-fx-font-size: 11px; -fx-text-fill: #64748b;"/>
+            </VBox>
+        </HBox>
+
+        <!-- Popular Démarches Section -->
+        <VBox spacing="14.0">
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Démarches administratives courantes" styleClass="title-medium"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Hyperlink text="Voir tout le catalogue →" onAction="#handleViewAllCatalogue"
+                           style="-fx-text-fill: #0f5132; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <FlowPane fx:id="popularDemarchesBox" hgap="16.0" vgap="16.0"/>
+        </VBox>
+
+        <!-- Recent Dossiers Section -->
+        <VBox spacing="14.0">
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Mes demandes récentes" styleClass="title-medium"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Hyperlink text="Gérer mes dossiers →" onAction="#handleViewAllDossiers"
+                           style="-fx-text-fill: #0f5132; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <TableView fx:id="recentDossiersTable" prefHeight="200.0">
+                <columns>
+                    <TableColumn fx:id="colNumeroSuivi" text="Numéro de suivi" prefWidth="150.0"/>
+                    <TableColumn fx:id="colDemarche" text="Démarche" prefWidth="250.0"/>
+                    <TableColumn fx:id="colDate" text="Date de création" prefWidth="140.0"/>
+                    <TableColumn fx:id="colStatut" text="Statut" prefWidth="180.0"/>
+                    <TableColumn fx:id="colAction" text="Action" prefWidth="120.0"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+                <placeholder>
+                    <Label text="Vous n'avez pas encore de dossier enregistré." styleClass="text-muted"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </VBox>
+</ScrollPane>

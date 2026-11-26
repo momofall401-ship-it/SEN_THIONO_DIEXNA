@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.senthioonodiexna.controller.NotificationsController"
+            fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;"
+            stylesheets="@../css/style.css">
+
+    <VBox spacing="20.0" style="-fx-padding: 24px;">
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="16.0">
+            <VBox spacing="4.0">
+                <Label text="Centre de Notifications Internes" styleClass="title-large"/>
+                <Label text="Suivez les alertes, demandes de compléments et décisions sur vos dossiers" styleClass="text-muted"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="✓ Tout marquer comme lu" onAction="#handleMarkAllAsRead" styleClass="btn-secondary"/>
+        </HBox>
+
+        <!-- Notifications Container -->
+        <VBox fx:id="notificationsListContainer" spacing="12.0">
+            <!-- Dynamically populated notification cards -->
+        </VBox>
+    </VBox>
+</ScrollPane>

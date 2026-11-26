@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.senthioonodiexna.controller.ProfileController"
+            fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;"
+            stylesheets="@../css/style.css">
+
+    <VBox spacing="20.0" style="-fx-padding: 24px;">
+        <VBox spacing="4.0">
+            <Label text="Mon Profil Utilisateur" styleClass="title-large"/>
+            <Label text="Gérez vos informations personnelles et vos paramètres de sécurité" styleClass="text-muted"/>
+        </VBox>
+
+        <HBox spacing="20.0">
+            <!-- Personal Info Card -->
+            <VBox spacing="16.0" HBox.hgrow="ALWAYS" styleClass="card">
+                <Label text="Informations personnelles" styleClass="title-medium"/>
+
+                <VBox spacing="12.0">
+                    <VBox spacing="6.0">
+                        <Label text="Prénom *" styleClass="text-bold"/>
+                        <TextField fx:id="prenomField"/>
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label text="Nom *" styleClass="text-bold"/>
+                        <TextField fx:id="nomField"/>
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label text="Adresse E-mail" styleClass="text-bold"/>
+                        <TextField fx:id="emailField" editable="false" style="-fx-background-color: #f1f5f9;"/>
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label text="Téléphone (Sénégal)" styleClass="text-bold"/>
+                        <TextField fx:id="telephoneField"/>
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label text="Rôle dans l'application" styleClass="text-bold"/>
+                        <TextField fx:id="roleField" editable="false" style="-fx-background-color: #f1f5f9;"/>
+                    </VBox>
+
+                    <Button text="Enregistrer les modifications" onAction="#handleSaveProfile"
+                            styleClass="btn-primary" maxWidth="Infinity"/>
+                </VBox>
+            </VBox>
+
+            <!-- Password Security Card -->
+            <VBox spacing="16.0" HBox.hgrow="ALWAYS" styleClass="card">
+                <Label text="Sécurité du compte &amp; Mot de passe" styleClass="title-medium"/>
+
+                <VBox spacing="12.0">
+                    <VBox spacing="6.0">
+                        <Label text="Ancien mot de passe *" styleClass="text-bold"/>
+                        <PasswordField fx:id="oldPasswordField" promptText="••••••••"/>
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label text="Nouveau mot de passe * (min 6 caractères)" styleClass="text-bold"/>
+                        <PasswordField fx:id="newPasswordField" promptText="••••••••"/>
+                    </VBox>
+
+                    <VBox spacing="6.0">
+                        <Label text="Confirmer le nouveau mot de passe *" styleClass="text-bold"/>
+                        <PasswordField fx:id="confirmNewPasswordField" promptText="••••••••"/>
+                    </VBox>
+
+                    <Label fx:id="passwordErrorLabel" wrapText="true" visible="false" managed="false"
+                           style="-fx-text-fill: #dc3545; -fx-font-size: 12px;"/>
+
+                    <Button text="Mettre à jour le mot de passe" onAction="#handleChangePassword"
+                            styleClass="btn-secondary" maxWidth="Infinity"/>
+                </VBox>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane>

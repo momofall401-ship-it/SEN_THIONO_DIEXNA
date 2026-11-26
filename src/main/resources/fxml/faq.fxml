@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sn.senthioonodiexna.controller.FaqController"
+            fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;"
+            stylesheets="@../css/style.css">
+
+    <VBox spacing="20.0" style="-fx-padding: 24px;">
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="16.0">
+            <VBox spacing="4.0">
+                <Label text="Foire Aux Questions (FAQ)" styleClass="title-large"/>
+                <Label text="Trouvez rapidement des réponses aux interrogations les plus fréquentes sur les démarches administratives" styleClass="text-muted"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnAddFaq" text="+ Ajouter une Question" onAction="#handleNewFaq"
+                    styleClass="btn-primary" visible="false" managed="false"/>
+        </HBox>
+
+        <!-- Search Bar -->
+        <HBox spacing="12.0" alignment="CENTER_LEFT" styleClass="card" style="-fx-padding: 12px 18px;">
+            <TextField fx:id="searchField" promptText="Recherche par mot-clé (validité, perte, passeport, quittance...)"
+                       HBox.hgrow="ALWAYS"/>
+            <Button text="Rechercher" onAction="#handleSearch" styleClass="btn-primary"/>
+            <Button text="Réinitialiser" onAction="#handleReset" styleClass="btn-secondary"/>
+        </HBox>
+
+        <!-- Questions Container -->
+        <VBox fx:id="faqItemsContainer" spacing="14.0">
+            <!-- Dynamically populated accordion cards -->
+        </VBox>
+    </VBox>
+</ScrollPane>

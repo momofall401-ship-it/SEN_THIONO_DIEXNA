@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sn.senthioonodiexna.controller.MesDossiersController"
+      spacing="20.0" style="-fx-padding: 24px;"
+      stylesheets="@../css/style.css">
+
+    <!-- Header & Controls -->
+    <HBox alignment="CENTER_LEFT" spacing="16.0">
+        <VBox spacing="4.0">
+            <Label text="Mes Dossiers Administratifs" styleClass="title-large"/>
+            <Label text="Suivez l'état d'instruction de l'ensemble de vos demandes" styleClass="text-muted"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="+ Nouvelle démarche" onAction="#handleNewDemarche" styleClass="btn-primary"/>
+    </HBox>
+
+    <!-- Filter Bar Card -->
+    <HBox spacing="12.0" alignment="CENTER_LEFT" styleClass="card" style="-fx-padding: 12px 18px;">
+        <TextField fx:id="searchField" promptText="Recherche par numéro de suivi ou démarche..."
+                   HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="statutFilterCombo" promptText="Tous les statuts" prefWidth="200.0"/>
+        <Button text="Filtrer" onAction="#handleFilter" styleClass="btn-secondary"/>
+        <Button text="Réinitialiser" onAction="#handleReset" styleClass="btn-secondary"/>
+    </HBox>
+
+    <!-- Table of Dossiers -->
+    <TableView fx:id="dossiersTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNumeroSuivi" text="N° Suivi" prefWidth="150.0"/>
+            <TableColumn fx:id="colDemarche" text="Démarche" prefWidth="240.0"/>
+            <TableColumn fx:id="colService" text="Service Administratif" prefWidth="220.0"/>
+            <TableColumn fx:id="colDateCreation" text="Date Création" prefWidth="130.0"/>
+            <TableColumn fx:id="colStatut" text="Statut" prefWidth="180.0"/>
+            <TableColumn fx:id="colAction" text="Actions" prefWidth="150.0"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+        <placeholder>
+            <Label text="Aucun dossier ne correspond à votre recherche." styleClass="text-muted"/>
+        </placeholder>
+    </TableView>
+</VBox>
